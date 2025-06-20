@@ -1,99 +1,91 @@
-# Streamlit Component Templates
+# 📅 Streamlit Calendar Input Widget 
 
-This repo contains templates and example code for creating [Streamlit](https://streamlit.io) Components.
+A **custom Streamlit calendar widget** that lets users **select dates** from a list of available options. Dates are shown **month-by-month**, with **green** marking available days and **red** marking unavailable ones.
 
-For complete information, please see the [Streamlit Components documentation](https://docs.streamlit.io/en/latest/streamlit_components.html)!
+## 🔧 Features
 
-## Overview
+* 📆 Interactive calendar input widget for Streamlit
+* ✅ Green: Available dates
+* ❌ Red: Unavailable dates
+* 🖱️ Click to select a date
+* 🔄 Returns a Python `datetime.date` object
 
-A Streamlit Component is made out of a Python API and a frontend (built using any web tech you prefer).
+---
 
-A Component can be used in any Streamlit app, can pass data between Python and frontend code, and can optionally be distributed on [PyPI](https://pypi.org/) for the rest of the world to use.
+## ✨ Example Screenshots
 
-- Create a component's API in a single line of Python:
+![Dark mode Screenshot](https://github.com/GaspardMerten/streamlit-calendar-input/blob/main/docs/dark.png?raw=true)
+![Light mode Screenshot](https://github.com/GaspardMerten/streamlit-calendar-input/blob/main/docs/light.png?raw=true)
 
-  ```python
-  import streamlit.components.v1 as components
+---
 
-  # Declare the component:
-  my_component = components.declare_component("my_component", path="frontend/build")
+## 📦 Installation
 
-  # Use it:
-  my_component(greeting="Hello", name="World")
-  ```
+```bash
+pip install streamlit-calendar-input
+```
 
-- Build the component's frontend out of HTML and JavaScript (or TypeScript, or ClojureScript, or whatever you fancy). React is supported, but not required:
+---
 
-  ```tsx
-  import React from 'react';
-  import {
-    withStreamlitConnection,
-    ComponentProps,
-  } from 'streamlit-component-lib';
+## 🚀 Usage
 
-  function MyComponent({ args }: ComponentProps) {
-    // Access arguments from Python via `props.args`:
-    const { greeting, name } = args;
-    return (
-      <div>
-        {greeting}, {name}!
-      </div>
-    );
-  }
+```python
+import streamlit as st
+from streamlit_calendar_input import calendar_input
+import datetime
 
-  export default withStreamlitConnection(MyComponent);
-  ```
+# Define available dates (e.g. from your backend, bookings, etc.)
+available_dates = [
+    datetime.date(2025, 6, 20),
+    datetime.date(2025, 6, 25),
+    datetime.date(2025, 7, 2),
+]
 
-## Quickstart
+# Call the calendar input
+selected_date = calendar_input(available_dates)
 
-- Ensure you have [Python 3.9+](https://www.python.org/downloads/), [Node.js](https://nodejs.org), and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed.
-- Clone this repo.
-- Create a new Python virtual environment for the template:
-  ```bash
-  $ cd template
-  $ python3 -m venv venv  # create venv
-  $ . venv/bin/activate   # activate venv
-  $ pip install streamlit # install streamlit
-  ```
-- Initialize and run the component template frontend:
-  ```bash
-  $ cd template/my_component/frontend
-  $ npm install    # Install npm dependencies
-  $ npm run start  # Start the Vite dev server
-  ```
-- From a separate terminal, run the template's Streamlit app:
-  ```bash
-  $ cd template
-  $ . venv/bin/activate  # activate the venv you created earlier
-  $ pip install -e . # install template as editable package
-  $ streamlit run my_component/example.py  # run the example
-  ```
-- If all goes well, you should see something like this:
-  ![Quickstart Success](quickstart.png)
-- Modify the frontend code at `my_component/frontend/src/MyComponent.tsx`.
-- Modify the Python code at `my_component/__init__.py`.
+# Display the selected date
+if selected_date:
+    st.success(f"You selected: {selected_date}")
+```
 
-## Examples
+---
 
-See the `template-reactless` directory for a template that does not use [React](https://reactjs.org/).
+## 🧠 How it Works
 
-See the `examples` directory for examples on working with pandas DataFrames, integrating with third-party libraries, and more.
+* The widget renders a calendar month by month.
+* Each day is color-coded:
 
-## Community-provided Templates
+  * ✅ Green: Clickable, available in `available_dates`
+  * ❌ Red: Not clickable, unavailable
+* When a user clicks a green date, the widget returns the corresponding `datetime.date` object.
 
-These templates are provided by the community. If you run into any issues, please file your issues against their repositories.
+---
 
-- [streamlit-component-svelte-template](https://github.com/93degree/streamlit-component-svelte-template) - [@93degree](https://github.com/93degree)
-- [streamlit-component-vue-vite-template](https://github.com/gabrieltempass/streamlit-component-vue-vite-template) - [@gabrieltempass](https://github.com/gabrieltempass)
-- [streamlit-component-template-vue](https://github.com/andfanilo/streamlit-component-template-vue) - [@andfanilo](https://github.com/andfanilo)
-- [streamlit-component-template-react-hooks](https://github.com/whitphx/streamlit-component-template-react-hooks) - [@whitphx](https://github.com/whitphx)
+## 📌 Requirements
 
-## Contributing
+* Python 3.7+
+* [Streamlit](https://streamlit.io/) 1.0+
 
-If you want to contribute to this project, `./dev.py` script will be helpful for you. For details, run `./dev.py --help`.
+---
 
-## More Information
+## 🧪 Development
 
-- [Streamlit Components documentation](https://docs.streamlit.io/library/components)
-- [Streamlit Forums](https://discuss.streamlit.io/tag/custom-components)
-- [Streamlit Components gallery](https://www.streamlit.io/components)
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/streamlit-calendar-input.git
+cd streamlit-calendar-input
+
+# (Optional) Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+
+# Install dependencies
+pip install -e .
+```
+
+---
+
+## 📝 License
+
+MIT License. See [LICENSE](./LICENSE) for more details.
