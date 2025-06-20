@@ -1,0 +1,89 @@
+.calendar-root {
+    font-family: sans-serif;
+}
+.month-container {
+    margin-bottom: 2em;
+}
+.month-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+.weekdays, .week-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+.calendar-cell {
+    padding: 6px;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 30px;
+    background-color: #e8f5e9;
+    margin: 1px;
+    color: green;
+    font-weight: bold;
+    cursor: pointer;
+}
+.calendar-cell.missing {
+    background-color: #ffcdd2;
+    color: #b71c1c;
+}
+.calendar-cell.empty {
+    background-color: silver;
+    color: #616161;
+    opacity: 0.5;
+    cursor: default;
+}
+
+.calendar-cell:hover:not(.empty) {
+    background-color: #c8e6c9;
+}
+.calendar-cell.selected {
+    background-color: #a5d6a7;
+    color: #1b5e20;
+}
+.calendar-cell.selected:hover {
+    background-color: #81c784;
+}
+
+.calendar-root {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-controls button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.calendar-controls button:disabled {
+    color: #ccc;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.calendar-controls button:not(:disabled):hover {
+    background-color: #eee;
+    color: black;
+}
+
+.calendar-controls span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}

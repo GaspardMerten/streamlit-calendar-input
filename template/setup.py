@@ -6,11 +6,11 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
-    name="streamlit-custom-component",
-    version="0.0.1",
-    author="John Smith",
-    author_email="john@example.com",
-    description="Streamlit component that allows you to do X",
+    name="streamlit-calendar-input",
+    version="0.0.3",
+    author="Gaspard Merten",
+    author_email="gaspard@norse.be",
+    description="Streamlit component that allows you to display a calendar on which users can select a date.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="",

@@ -1,1 +1,1 @@
-recursive-include my_component/frontend/build *
+recursive-include streamlit_calendar_input/frontend/build *
